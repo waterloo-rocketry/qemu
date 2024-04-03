@@ -1,7 +1,7 @@
 #include "qemu/osdep.h"
 
 #include "hw/arm/boot.h"
-#include "hw/arm/stm32h750_soc.h"
+#include "hw/arm/stm32h733_soc.h"
 #include "hw/boards.h"
 #include "hw/qdev-clock.h"
 #include "hw/qdev-properties.h"
@@ -9,15 +9,15 @@
 #include "qemu/error-report.h"
 #include "qemu/typedefs.h"
 
-static void srad_camera_init(MachineState *machine) {}
+static void processor_board_init(MachineState *machine) {}
 
-static void srad_camera_machine_init(MachineClass *mc) {
+static void processor_board_machine_init(MachineClass *mc) {
 	static const char *const valid_cpu_types[]
 		= {ARM_CPU_TYPE_NAME("cortex-m7"), NULL};
 
-	mc->desc = "Waterloo Rocketry SRAD Camera (STM32H750, Cortex-M7)";
-	mc->init = srad_camera_init;
+	mc->desc = "Waterloo Rocketry Processor Board (STM32H733,Cortex-M7)";
+	mc->init = processor_board_init;
 	mc->valid_cpu_types = valid_cpu_types;
 }
 
-DEFINE_MACHINE("srad-camera", srad_camera_machine_init)
+DEFINE_MACHINE("processor-board", processor_board_machine_init)
